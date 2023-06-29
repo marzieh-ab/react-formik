@@ -12,15 +12,20 @@ const initialValues = {
   confirm_password: "",
 };
 
+const onSubmit = async (values, actions) => {
+    console.log(values);
+    console.log(actions);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    actions.resetForm();
+  };
+
+
+
 const Registration = () => {
     const {values,handleChange,handleBlur,handleSubmit,errors,touched}=useFormik({
         initialValues,
         validationSchema:signUpSchema ,
-        onSubmit:(values,action)=>{
-            console.log(values)
-            action.resetForm()
-
-        }
+        onSubmit,
 
     })
 
